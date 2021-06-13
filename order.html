@@ -34,8 +34,9 @@
   }
 
   function order(){
-    var p_number = document.getElementById("p_tel");
-    var c_num = document.getElementById("card_num");
+    var p_num = document.getElementById("p_tel").value;
+    var c_num = document.getElementById("card_num").value;
+    var cvc_num = document.getElementById("cvc").value;
     var chk1 = document.getElementById("card").checked;
     var chk2 = document.getElementById("bankbook").checked;
     var chk3 = document.getElementById("account").checked;
@@ -58,12 +59,20 @@
 
     if(chk1)
     {
-      if(card_type=="카드"||c_num==null)
+      if(card_type=="카드")
       {
-        alert(document.write(c_num));
+        alert("정보를 모두 입력해주세요.");
+      }
+      if(c_num.length==0)
+      {
+        alert("카드번호를  입력해주세요.");
+      }
+      if(cvc_num.length==0)
+      {
+        alert("CVC 번호를 입력해주세요.");
       }
       else{
-        alert(card_type+" 신용카드를 선택하셨습니다. 할부 개월수는 "+month_type+" 입니다.\n" +"카드번호 : "+c_num.value+"로 결제됩니다.");
+        alert(card_type+" 신용카드를 선택하셨습니다. 할부 개월수는 "+month_type+" 입니다.\n" +"카드번호 : "+c_num+"로 결제됩니다.");
         document.location.href="main.html";
       }
 
@@ -96,12 +105,17 @@
 
     else if(chk4)
     {
-      if(phone_type=="통신사"||p_number==null)
+      if(phone_type=="통신사")
       {
-        alert(document.write(p_number.value));
+        alert("정보를 모두 입력해주세요.");
+      }
+
+      if(p_num.length==0)
+      {
+        alert("휴대폰 번호를 입력해주세요.");
       }
       else{
-        alert(phone_type+" 통신사 휴대폰결제를 선택하셨습니다\n"+p_number.value+"번호로 결제금액이 청구됩니다.");
+        alert(phone_type+" 통신사 휴대폰결제를 선택하셨습니다\n"+p_num+" 번호로 결제금액이 청구됩니다.");
         document.location.href="main.html";
       }
 
@@ -244,7 +258,7 @@ td,th{
           <table class="none-border">
             <tr>
               <td style="width:80px;">
-                <img src="picture/order/pic2.jpg" alt="delivery" class="img-circle img-responsive" width="70px" height="70px">
+                <img src="picture/order/pic2.jpg" alt="delivery" class="img-circle" width="70px" height="70px">
               </td>
               <td style="border-style: hidden; padding-left:20px;">
                 <h3 style="margin-left: 0px; margin-top:10px; font-family: 'S-CoreDream-3Light';"> <b>이제부터 새벽에 배송됩니다.</b><br><br>
@@ -384,7 +398,7 @@ td,th{
               <form name="bank_type">
               <th><input type="checkbox" name="check" onclick='checkOnlyOne(this)' id="bankbook" style="margin-right:5px;">무통장 입금</th>
               <td><label style="font-family: 'GmarketSansLight'; font-size:15px; margin-left:5px;">
-                <select style="width:210px; padding-right:7px; padding-left:7px;" name="banks" required autofocus>
+                <select style="width:210px; padding-right:7px; padding-left:7px;" name="banks" required>
                     <option value="은행">은행을 선택해주세요</option>
                     <option value="신한">신한</option>
                     <option value="KB국민">KB국민</option>
@@ -403,7 +417,7 @@ td,th{
               <form name="account_type">
               <th><input type="checkbox" name="check" onclick='checkOnlyOne(this)' id="account" style="margin-right:5px;">계좌이체</th>
               <td><label style=" font-family: 'GmarketSansLight';font-size:15px; margin-left:5px;">
-                <select style=" width:210px; padding-right:7px; padding-left:7px;" name="banks2" required autofocus>
+                <select style=" width:210px; padding-right:7px; padding-left:7px;" name="banks2" required>
                     <option value="은행">은행을 선택해주세요</option>
                     <option value="신한">신한</option>
                     <option value="KB국민">KB국민</option>
@@ -422,14 +436,14 @@ td,th{
               <form name="phone_type">
               <th><input type="checkbox" name="check" onclick='checkOnlyOne(this)' id="cellphone" style="margin-right:5px;">휴대폰 결제</th>
               <td><label style="font-family: 'GmarketSansLight'; font-size:15px; margin-left:5px;">
-                <select style="width:210px; padding-right:7px; padding-left:7px;" id="phone" name="phones" required autofocus>
+                <select style="width:210px; padding-right:7px; padding-left:7px;" id="phone" name="phones">
                     <option value="통신사">통신사를 선택해주세요</option>
                     <option value="SKT">SKT</option>
                     <option value="KT">KT</option>
                     <option value="LG U+">LG U+</option>
                     <option value="알뜰폰">알뜰폰</option>
                   </select>
-                    <input type="tel" id="p_tel" placeholder="휴대폰 번호 입력">
+                    <input type="tel" id="p_tel" placeholder="휴대폰 번호 입력" required>
                 </form>
 
               </td>
