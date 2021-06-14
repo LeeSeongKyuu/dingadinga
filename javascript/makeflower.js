@@ -3,7 +3,6 @@ var button2; //전역변수 선언
 var button3; //전역변수 선언
 var button4; //전역변수 선언
 var cancel_btn;
-
 var total_price=0;
 
 window.onload=function(){
@@ -86,7 +85,7 @@ window.onload=function(){
 
   refresh_f=function refreshImg(){
     $("#preview").empty();
-    total_price=0; 
+    total_price=0;
   }
 
   // cancel_f=function cancelImg(){
